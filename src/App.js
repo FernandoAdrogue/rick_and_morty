@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 // eslint-disable-next-line no-unused-vars
-import Card from './components/Card.jsx';
-import Cards from './components/Cards.jsx';
-import SearchBar from './components/SearchBar.jsx';
+import Card from './components/Card/Card';
+import Cards from './components/Cards/Cards';
+import SearchBar from './components/SearchBar/SearchBar';
 // eslint-disable-next-line no-unused-vars
 import characters, { Rick } from './data.js';
 
@@ -13,11 +13,9 @@ function App() {
         <div>
          <SearchBar onSearch={(characterID) => window.alert(characterID)} />
         </div>
-        <hr></hr>
         <div>
          <Cards characters={characters} />
         </div>
-        <hr></hr>
         <div>
          <Card
             id={Rick.id}

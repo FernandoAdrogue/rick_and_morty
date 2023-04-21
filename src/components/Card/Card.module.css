@@ -1,0 +1,59 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-end;
+    width: 12em;
+    height: 20em;
+    border: 2px solid grey;
+    border-radius: 20px / 15px;
+    background-image: linear-gradient(0deg, rgba(28,28,28,1) 5%, rgba(100,100,100,1) 15%, rgba(100,100,100,1) 85%, rgba(28,28,28,1) 97%);
+    background-position: 50% 50%;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-size: auto auto;
+}
+
+.stikerCard {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content:stretch;
+    align-items: center;
+    align-content: flex-end;
+    background-color: rgb(244, 236, 225);
+    width: 99%;
+    height: 80%;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.imgCard{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    display: flex;
+    height: 200px;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-end
+}
+
+.imgCard img {
+    align-self:center;
+    /* border: 1px solid rgba(246,178,107,1); */
+    border-radius: 17px / 15px;
+    box-shadow: 0 0 4px 4px rgba(246,178,107,0.3);
+    width: 65%;
+}
+
+.subTitle {
+    font-size: small;
+    font-weight:bolder;
+    padding: 0px;
+    margin: 0px;
+    height: 2.2em;
+}

@@ -1,0 +1,61 @@
+.closeButton {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    background: #e62222;
+   }
+   
+   .closeButton, .closeButton span {
+    transition: 200ms;
+   }
+   
+   .closeButton .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+   }
+   
+   .closeButton .icon {
+    position: absolute;
+    border-left: 1px solid #c41b1b;
+    transform: translateX(110px);
+    height: 15px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+   
+   .closeButton svg {
+    width: 15px;
+    fill: #eee;
+   }
+   
+   .closeButton:hover {
+    background: #ff3636;
+   }
+   
+   .closeButton:hover .text {
+    color: transparent;
+   }
+   
+   .closeButton:hover .icon {
+    width: 140px;
+    border-left: none;
+    transform: translateX(0);
+   }
+   
+   .closeButton:focus {
+    outline: none;
+   }
+   
+   .closeButton:active .icon svg {
+    transform: scale(0.8);
+   }
