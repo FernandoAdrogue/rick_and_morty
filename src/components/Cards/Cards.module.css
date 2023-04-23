@@ -1,6 +1,25 @@
 .cardsContainer {
+    margin-top: auto;
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrucelCards{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 340px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    @media (max-width:800px) {
+       width: 400px; 
+    }
+    
+   
 }

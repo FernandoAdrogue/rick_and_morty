@@ -5,15 +5,28 @@
     justify-content: center;
     align-items: center;
     align-content: flex-end;
-    width: 12em;
-    height: 20em;
-    border: 2px solid grey;
+    width: 160px;
+    height: 300px;
+    margin-right: -30px;
+    flex-grow: 0;
+    object-fit: cover;
+    border: 2px solid rgb(56, 239, 10);
     border-radius: 20px / 15px;
-    background-image: linear-gradient(0deg, rgba(28,28,28,1) 5%, rgba(100,100,100,1) 15%, rgba(100,100,100,1) 85%, rgba(28,28,28,1) 97%);
-    background-position: 50% 50%;
-    background-origin: padding-box;
-    background-clip: border-box;
-    background-size: auto auto;
+    background-image: url(../../img/peakpx.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    transition: 0.5s ease;
+}
+
+.cardContainer:hover{
+    cursor: crosshair;
+    width: 190px;
+    height: 340px;
+    opacity: 1;
+    margin-left: 35px;
+    margin-right: 5px;
 }
 
 .stikerCard {
@@ -23,7 +36,7 @@
     justify-content:stretch;
     align-items: center;
     align-content: flex-end;
-    background-color: rgb(244, 236, 225);
+    background-color:unset;
     width: 99%;
     height: 80%;
     margin-bottom: 40px;
@@ -44,9 +57,8 @@
 
 .imgCard img {
     align-self:center;
-    /* border: 1px solid rgba(246,178,107,1); */
     border-radius: 17px / 15px;
-    box-shadow: 0 0 4px 4px rgba(246,178,107,0.3);
+    box-shadow: 0 0 20px 4px rgba(38, 249, 10, 0.7);
     width: 65%;
 }
 
@@ -56,4 +68,35 @@
     padding: 0px;
     margin: 0px;
     height: 2.2em;
+    color: chartreuse;
+}
+
+.Title {
+    font-size: 1em;
+    font-weight:bolder;
+    padding: 0px;
+    margin: 0px;
+    height: 2.3em;
+    color: chartreuse;
+}
+
+.Title:hover {
+    font-size: 1.1em;
+    text-shadow: 1px 1px 3px rgba(38, 249, 10, 0.6);
+    font-weight:bolder;
+    padding: 0px;
+    margin: 0px;
+    height: 2.4em;
+    color: chartreuse;
+    transition: 0.7s ease;
+}
+.subTitle:hover {
+    font-size: 0.9em;
+    text-shadow: 1px 1px 3px rgba(38, 249, 10, 0.6);
+    font-weight:bolder;
+    padding: 0px;
+    margin: 0px;
+    height: 2.3em;
+    color: chartreuse;
+    transition: 0.7s ease;
 }

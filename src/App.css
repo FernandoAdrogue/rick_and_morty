@@ -2,10 +2,12 @@
    text-align: center;
    display: flex;
    flex-direction: column;
+   align-content: space-around;
    align-items: center;
-   background-image: url(../src/img/fondo2.gif);
+   flex-wrap: wrap;
+   background-image: url(../src/img/paul-volkmer-qVotvbsuM_c-unsplash.jpg);
    background-repeat: no-repeat;
    background-size: cover;
    background-attachment: fixed;
-   background-position: center center;;
+   background-position: center;
 }

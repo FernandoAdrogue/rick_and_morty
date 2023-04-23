@@ -1,36 +1,42 @@
-.closeButton {
-    width: 150px;
+.closeButtonContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 60px;
     height: 50px;
+}
+.closeButton {
+    flex-grow: 1;
+    object-fit: cover;
     cursor: pointer;
+    /* width: 100px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: red;
+    background: #a50c0c;
     border: none;
     border-radius: 5px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-    background: #e62222;
+    background: #a50c0c;
    }
    
-   .closeButton, .closeButton span {
-    transition: 200ms;
-   }
+   /* .closeButton, .closeButton span {
+    transition: 500ms;
+   } */
    
    .closeButton .text {
-    transform: translateX(35px);
+    transform: translateX(4px);
     color: white;
     font-weight: bold;
    }
    
    .closeButton .icon {
     position: absolute;
-    border-left: 1px solid #c41b1b;
-    transform: translateX(110px);
+    transform: translateX(17px);
     height: 15px;
-    width: 30px;
+    width: 0px;
     display: flex;
     align-items: center;
-    justify-content: center;
    }
    
    .closeButton svg {
@@ -39,7 +45,7 @@
    }
    
    .closeButton:hover {
-    background: #ff3636;
+    background: #c51515;
    }
    
    .closeButton:hover .text {
@@ -49,7 +55,7 @@
    .closeButton:hover .icon {
     width: 140px;
     border-left: none;
-    transform: translateX(0);
+    transform: translateX(17px);
    }
    
    .closeButton:focus {
