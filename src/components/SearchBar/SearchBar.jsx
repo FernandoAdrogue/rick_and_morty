@@ -1,11 +1,18 @@
-import React from "react";
+import {useState} from "react";
 import styles from './SearchBar.module.css'
 
 export default function SearchBar({onSearch}) {
+   
+   const [id, setId] = useState('')
+   const handleChange = (e)=> {
+      const {value} = e.target
+      setId(value)
+   }
    return (
       <div className={styles.containerBar}>
-         <input className={styles.inputBar} type='search' />
-         <button className={styles.buttonBar}onClick={(characterID)=>{onSearch(characterID)}}>
+         <input className={styles.inputBar} type='search' onChange={handleChange} value={id} />
+         <button className={styles.buttonBar}onClick={()=>{onSearch(id)
+                                                           setId('')}}>
          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#f5f3f3">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

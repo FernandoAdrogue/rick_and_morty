@@ -3,10 +3,10 @@ import styles from './Card.module.css'
 import CloseButton from "../CloseButton/CloseButton"
 
 
-export default function Card({name,status,species,gender,origin,image,onClose}) {
+export default function Card({id,name,status,species,gender,origin,image,onClose}) {
    return(
       <div className={styles.cardContainer}>
-         <CloseButton onClick={onClose} textButton={"Cerrar"}/>
+         <CloseButton onClose={onClose} id={id} textButton={"Cerrar"}/>
          <div className={styles.stikerCard}>
             <h2 className={styles.Title}>{name}</h2>
             <h2 className={styles.subTitle}>{status}</h2>

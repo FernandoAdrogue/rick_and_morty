@@ -2,15 +2,15 @@ import React from 'react';
 import styles from './Cards.module.css'
 import Card from '../Card/Card';
 
-export default function Cards({characters}) {
-   const onClose = () => window.alert('Emulamos que se cierra la card');
+export default function Cards({characters,onClose}) {
    return ( 
       <div className={styles.carrucelCards}>
-         <div className={styles.cardsContainer}>
+         {/* <div className={styles.cardsContainer}> */}
             {characters.map( ({id,name,status,species,gender,origin,image}) => {
                return(
                         <Card
                            key={id}
+                           id={id}
                            name={name}
                            status={status}
                            species={species}
@@ -23,7 +23,7 @@ export default function Cards({characters}) {
                   }
                )
             }
-         </div>
+         {/* </div> */}
       </div>
       
    )

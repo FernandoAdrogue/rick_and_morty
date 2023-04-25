@@ -1,9 +1,9 @@
 import React from "react";
 import styles from './CloseButton.module.css'
-const CloseButton = ({onClick, textButton}) => {
+const CloseButton = ({onClose,id,textButton}) => {
     return(
         <div className={styles.closeButtonContainer}>
-            <button onClick={onClick} className={styles.closeButton}>
+            <button onClick={()=>onClose(id)} className={styles.closeButton}>
                 <span className={styles.text}>{textButton}</span>
                 <span className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

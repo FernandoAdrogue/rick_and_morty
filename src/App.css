@@ -1,13 +1,8 @@
 .App {
-   text-align: center;
+   /* text-align: center; */
    display: flex;
    flex-direction: column;
-   align-content: space-around;
+   align-content:stretch;
    align-items: center;
    flex-wrap: wrap;
-   background-image: url(../src/img/paul-volkmer-qVotvbsuM_c-unsplash.jpg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-attachment: fixed;
-   background-position: center;
 }
