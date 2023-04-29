@@ -11,7 +11,7 @@ const Error = ()=> {
                     <div className={styles.errorIconContainer}>
                         <svg xmlns="http://www.w3.org/2000/svg" 
                         class="icon icon-tabler icon-tabler-face-id-error" 
-                        width="24" height="24" 
+                        width="100%" height="100%" 
                         viewBox="0 0 24 24" 
                         stroke-width="2" 
                         stroke="currentColor" 

@@ -32,6 +32,7 @@ function App() {
       <div className='App'>
          <Nav onSearch={onSearch}/>
          <Routes>
+            <Route path='/' element={<Navigate to='/home'/>}/>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/>
             <Route path='/about'element={<About/>}/>
             <Route path='/detail/:id' element={<Detail/>}/>
