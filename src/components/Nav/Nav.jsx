@@ -1,10 +1,10 @@
 import SearchBar from "../SearchBar/SearchBar"
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import styles from "./Nav.module.css"
+import LogOut from "../LogOut/LogOut"
 
-const Nav = ({onSearch}) => {
-    
-    return(
+const Nav = ({onSearch,logOut}) => {
+    return(useLocation().pathname !== '/' ? 
         <div className={styles.containerNav}>
             <SearchBar onSearch={onSearch} />
             <Link to="/about">
@@ -13,8 +13,10 @@ const Nav = ({onSearch}) => {
             <Link to="/home">
                 <button className={styles.buttonNav}>Home</button>    
             </Link>
+            <LogOut logOut={logOut}/>
         </div>
-    )
+    :null
+)
 }
 
 export default Nav
