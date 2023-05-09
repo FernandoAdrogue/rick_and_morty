@@ -35,10 +35,10 @@ const Form = ({login}) => {
                 <h1>Log In</h1>
                 <img src={fondo} alt="Rick & Morty"/>
                 <label htmlFor="">Email</label>
-                <input name={'email'} type="text" onChange={handleChange} value={userData.email} />
+                <input name={'email'} type="email" onChange={handleChange} value={userData.email} />
                 {errors.email && <p style={{color: "red"}}>{errors.email}</p>}
                 <label htmlFor="">Password</label>
-                <input name={'password'} type="text" onChange={handleChange} value={userData.password}/>
+                <input name={'password'} type="password" onChange={handleChange} value={userData.password}/>
                 {errors.password && <p style={{color: "red"}}>{errors.password}</p>}
                 <button type='submit'>Submit</button>
             </form>

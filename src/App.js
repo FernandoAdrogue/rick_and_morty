@@ -11,18 +11,19 @@ import Error from './components/Error/Error';
 import { Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Favorites from './components/Favorites/Favorites'
 
 function App() {
 
    const [characters, setCharacters] = useState([])
-
+   const [maxCharacters, setMaxcharacters] = useState(0)
   //Login
    const [access, setAccess] = useState(false)
    const EMAIL = 'myEmail@mail.com'
    const PASSWORD = 'asdFgtrew1'
 
    const navigate = useNavigate();
-
+   
    const login = (userData)=> {
       if (userData.password === PASSWORD && userData.email === EMAIL) {
          setAccess(true);
@@ -35,26 +36,37 @@ function App() {
       setCharacters([])
       navigate('/')
    }
-
+   
    const onSearch = (id)=> {
       axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-      if (data.name) {
-         setCharacters((oldChars) => [...oldChars, data]);
-      } else {
-         window.alert('¡No hay personajes con este ID!');
-      }
-   });
+         if (data.name) {
+            setCharacters((oldChars) => [...oldChars, data]);
+         } else {
+            window.alert('¡No hay personajes con este ID!');
+         }
+      });
    }
 
+   
    const onClose = (id)=>{
-         const filtered = characters.filter((character)=>character.id !== Number(id))
+      const filtered = characters.filter((character)=>character.id !== Number(id))
          setCharacters(filtered)
-   }
-
-   useEffect(() => {
-      !access && navigate('/');
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [access]);
+      }
+      
+      useEffect(() => {
+         !access && navigate('/');
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [access]);
+      
+      useEffect(()=>{
+         axios(`https://rickandmortyapi.com/api/character`).then(({data})=>{
+         console.log(Number(data.info.count));   
+         setMaxcharacters(Number(data.info.count)-1)
+         })
+         const randomId = (Math.floor(Math.random() * maxCharacters))
+         onSearch(randomId+1)
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[maxCharacters])   
 
    return (
       <div className='App'>
@@ -63,8 +75,9 @@ function App() {
             <Route path='/' element={<Form login={login}/>}/>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/>
             <Route path='/about'element={<About/>}/>
-            <Route path='/detail/:id' element={<Detail/>}/>
-            <Route path='*' element={<Navigate to='/404' />} />
+            <Route path='/favorites' element={<Favorites onClose={onClose}/>}/>
+            <Route path='/detail/:id' element={<Detail/>} />
+            <Route path='*' element={<Navigate to='/404'/>}/>
             <Route path='/404' element={<Error/>}/>
          </Routes>
       </div>

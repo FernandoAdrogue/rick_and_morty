@@ -1,7 +1,7 @@
 .closeButtonContainer {
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items:flex-start;
     width: 60px;
     height: 50px;
 }
