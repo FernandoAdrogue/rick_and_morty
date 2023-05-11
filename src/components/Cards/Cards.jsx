@@ -5,7 +5,6 @@ import Card from '../Card/Card';
 export default function Cards({characters,onClose}) {
    return ( 
       <div className={styles.carrucelCards}>
-         {/* <div className={styles.cardsContainer}> */}
             {characters.map( ({id,name,status,species,gender,origin,image}) => {
                return(
                         <Card
@@ -23,7 +22,6 @@ export default function Cards({characters,onClose}) {
                   }
                )
             }
-         {/* </div> */}
       </div>
       
    )

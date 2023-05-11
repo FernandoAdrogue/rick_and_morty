@@ -3,7 +3,7 @@ import {Link, useLocation} from "react-router-dom"
 import styles from "./Nav.module.css"
 import LogOut from "../LogOut/LogOut"
 
-const Nav = ({onSearch,logOut}) => {
+const Nav = ({onSearch,logOut}) => {//Navbar whit conditional render
     const location = useLocation().pathname
     return( location !== '/' ? 
         <div className={styles.containerNav}>

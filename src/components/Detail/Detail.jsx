@@ -10,7 +10,7 @@ const Detail = ()=> {
     const {id} = useParams()
     const [character ,setCharacter] = useState({})
     
-    useEffect(() => {
+    useEffect(() => {//Make API Request whit an ID
         axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
             if (data.name) {
                 setCharacter(data);
@@ -19,9 +19,9 @@ const Detail = ()=> {
            }
         });
         return setCharacter({});
-     }, [id]);
+     }, [id]);//Subscribe to ID change
 
-    return (
+    return (//If exist "character" render Datail if exist "name"
         <>
         {character?.name ? (
             <div className={styles.detailContainer}>

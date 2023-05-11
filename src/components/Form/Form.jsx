@@ -14,7 +14,7 @@ const Form = ({login}) => {
         password:''
     })
 
-    const handleChange = (e)=>{
+    const handleChange = (e)=>{//Validation input form
         const {name,value}= e.target
         const newUserdata = {
             ...userData,
@@ -25,7 +25,7 @@ const Form = ({login}) => {
         setErrors(errors)
     }
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) =>{//Submit form data
         e.preventDefault()
         
         login(userData)
@@ -36,9 +36,11 @@ const Form = ({login}) => {
                 <img src={fondo} alt="Rick & Morty"/>
                 <label htmlFor="">Email</label>
                 <input name={'email'} type="email" onChange={handleChange} value={userData.email} />
+                {/* Condictional render to email error input */}
                 {errors.email && <p style={{color: "red"}}>{errors.email}</p>}
                 <label htmlFor="">Password</label>
                 <input name={'password'} type="password" onChange={handleChange} value={userData.password}/>
+                {/* Condictional render to password error input */}
                 {errors.password && <p style={{color: "red"}}>{errors.password}</p>}
                 <button type='submit'>Submit</button>
             </form>

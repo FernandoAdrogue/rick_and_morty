@@ -2,40 +2,41 @@ import React from "react"
 import styles from './Card.module.css'
 import CloseButton from "../CloseButton/CloseButton"
 import {Link} from "react-router-dom"
-import { addFav, removeFav } from "../../redux/actions"
+import { addFav, removeFav, getAllFav } from "../../redux/actions"
 import { useState } from "react"
 //import {useSelector, useDispatch} from "react-redux"
 import FavButton from "../FavButton/FavButton"
 import { useEffect } from "react"
 import { connect } from "react-redux"
 
-function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,removeFavCard,myFavorites}) {
+function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,removeFavCard,myFavorites,allCharacters}) {
    
-   //const dispatch = useDispatch()
-   
-   //const myFavorites = useSelector((state)=> state.myFavorites) //suscripcion del componente al estado global
-   
-   useEffect(() => {
-      myFavorites.forEach((fav) => {
+   useEffect(() => {//Set Fav icon Card when Favorites or Filtered Favorites change
+      getAllFavDispath()
+      allCharacters.forEach((fav) => {
          if (fav.id === id) {
             setIsFav(true);
          }
       });
    // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [myFavorites]);
+   }, [myFavorites,allCharacters]);
    
    const addFavDispath = ()=> {
-      /*dispatch*/(addFavCard({id,name,status,species,gender,origin,image}))
+      (addFavCard({id,name,status,species,gender,origin,image}))
    }
 
    const removeFavDispath = ()=> {
-      /*dispatch*/(removeFavCard(id))
+      (removeFavCard(id))
+   }
+
+   const getAllFavDispath = ()=> {
+      (getAllFav())
    }
 
    const [isFav, setIsFav] = useState(false)
 
 
-   const handleFavorite = ()=> {
+   const handleFavorite = ()=> { //Remove the current favorite from de global estate
       if(isFav){
          setIsFav(false)
          removeFavDispath()
@@ -43,6 +44,7 @@ function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,rem
          setIsFav(true)
          addFavDispath()
       }
+      getAllFavDispath()
    }
    
    return(
@@ -70,13 +72,15 @@ function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,rem
 export function mapDispatchToProps(dispatch){
    return {
       addFavCard: (character)=> dispatch(addFav(character)),
-      removeFavCard: (id)=> dispatch(removeFav(id))
+      removeFavCard: (id)=> dispatch(removeFav(id)),
+      getAllFav: ()=> dispatch(getAllFav)
    }
 }
 
 export function mapStateToProps(state){
    return {
-      myFavorites: state.myFavorites
+      myFavorites: state.myFavorites,
+      allCharacters: state.allCharacters
    }
 }
 

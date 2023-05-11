@@ -1,7 +1,7 @@
 import styled from "./FavButton.module.css"
 
 const FavButton = ({isFav, onClick})=> {
-    return(
+    return(//Render Fav Icon if the favorite estatus is true
         <>
             {
                 isFav ? (
