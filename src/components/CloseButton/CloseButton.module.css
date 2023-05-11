@@ -19,11 +19,7 @@
     box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
     background: #a50c0c;
    }
-   
-   /* .closeButton, .closeButton span {
-    transition: 500ms;
-   } */
-   
+      
    .closeButton .text {
     transform: translateX(4px);
     color: white;

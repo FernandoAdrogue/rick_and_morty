@@ -1,6 +1,6 @@
 import styles from "./Error.module.css"
 
-const Error = ()=> {
+const Error = ()=> {//Render error 404 styled
 
     return <div className={styles.errorContainer}>
                 <div className={styles.errorTextContainer}>
