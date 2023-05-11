@@ -73,7 +73,7 @@ export function mapDispatchToProps(dispatch){
    return {
       addFavCard: (character)=> dispatch(addFav(character)),
       removeFavCard: (id)=> dispatch(removeFav(id)),
-      getAllFav: ()=> dispatch(getAllFav)
+      getAllFav: ()=> dispatch(getAllFav())
    }
 }
 

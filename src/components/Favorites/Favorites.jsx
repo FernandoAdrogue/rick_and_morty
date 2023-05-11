@@ -46,7 +46,7 @@ const Favorites =()=>{
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="Genderless">Genderless</option>
-                  <option value="unknown">"unknown"</option>
+                  <option value="unknown">Unknown</option>
                </select>
             </div>
             <div className={styles.carrucelFav}>
