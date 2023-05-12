@@ -1,37 +1,36 @@
 import { useDispatch, useSelector } from "react-redux"
 import Card from "../Card/Card"
 import styles from './Favorites.module.css'
-import { removeFav, getAllFav } from "../../redux/actions"
+import { removeFav } from "../../redux/actions"
 import { orderCards,filterCards } from "../../redux/actions"
-import { useEffect, useState } from "react"
+import { useEffect, /*useState*/ } from "react"
 const Favorites =()=>{
 
-   const [aux,setAux] = useState(false)
+   //const [aux,setAux] = useState(false)
    
    const dispath= useDispatch()
 
-    const myFavorites= useSelector((state)=> state.myFavorites)
+    const {myFavorites}= useSelector((state)=> state)
     
     const onClose = (id)=>{
         dispath(removeFav(id))
-        dispath(getAllFav())
     }
     const handleOrder = (event) =>{
       const {value} = event.target
       dispath(orderCards(value))
-      aux ? setAux(false):setAux(true)
+      //setAux(!aux)
     }
 
     const handleFilter = (event) => {
       const {value} = event.target
       dispath(filterCards(value))
-      aux ? setAux(false):setAux(true)
+      //setAux(!aux)
     }
 
     useEffect(()=>{//set Ascendant Filter on mount component
-      const value = "A"
+      const value = "UN"
       dispath(orderCards(value))
-      aux ? setAux(false):setAux(true)
+      //setAux(!aux)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -39,10 +38,13 @@ const Favorites =()=>{
          <div className={styles.favContainer}>
             <div className={styles.selectContainer}>
                <select onChange={handleOrder}>
+                  <option value="UN" selected disabled>Order by</option>
                   <option value="A">Ascendente</option>
                   <option value="D">Descendente</option>
                </select>
                <select onChange={handleFilter}>
+                  <option value="ALL" selected disabled>Filter by</option>
+                  <option value="ALL">All</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="Genderless">Genderless</option>
@@ -50,6 +52,7 @@ const Favorites =()=>{
                </select>
             </div>
             <div className={styles.carrucelFav}>
+                {console.log("myFavorites: ",myFavorites)}
                 {myFavorites.map( ({id,name,status,species,gender,origin,image}) => {
                      return(
                               <Card

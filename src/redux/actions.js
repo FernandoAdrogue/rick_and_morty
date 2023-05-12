@@ -2,7 +2,7 @@ export const ADD_FAV = "ADD_FAV"
 export const REMOVE_FAV = "REMOVE_FAV"
 export const FILTER = "FILTER"
 export const ORDER = "ORDER"
-export const GET_All_FAV ="GET_All_FAV"
+export const CLEAR_FAV = "CLEAR_FAV"
 
 export const addFav = (character)=>{
     return {
@@ -33,8 +33,8 @@ export const orderCards = (order)=> {
     }
 }
 
-export const getAllFav = () => {
+export const clearFav = () => {
     return {
-        type: GET_All_FAV
+        type: CLEAR_FAV
     }
 }

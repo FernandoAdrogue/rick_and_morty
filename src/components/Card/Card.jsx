@@ -2,24 +2,23 @@ import React from "react"
 import styles from './Card.module.css'
 import CloseButton from "../CloseButton/CloseButton"
 import {Link} from "react-router-dom"
-import { addFav, removeFav, getAllFav } from "../../redux/actions"
+import { addFav, removeFav} from "../../redux/actions"
 import { useState } from "react"
 //import {useSelector, useDispatch} from "react-redux"
 import FavButton from "../FavButton/FavButton"
 import { useEffect } from "react"
 import { connect } from "react-redux"
 
-function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,removeFavCard,myFavorites,allCharacters}) {
+function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,removeFavCard,myFavorites}) {
    
    useEffect(() => {//Set Fav icon Card when Favorites or Filtered Favorites change
-      getAllFavDispath()
-      allCharacters.forEach((fav) => {
+      myFavorites.forEach((fav) => {
          if (fav.id === id) {
             setIsFav(true);
          }
       });
    // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [myFavorites,allCharacters]);
+   }, [myFavorites]);
    
    const addFavDispath = ()=> {
       (addFavCard({id,name,status,species,gender,origin,image}))
@@ -27,10 +26,6 @@ function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,rem
 
    const removeFavDispath = ()=> {
       (removeFavCard(id))
-   }
-
-   const getAllFavDispath = ()=> {
-      (getAllFav())
    }
 
    const [isFav, setIsFav] = useState(false)
@@ -44,7 +39,6 @@ function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,rem
          setIsFav(true)
          addFavDispath()
       }
-      getAllFavDispath()
    }
    
    return(
@@ -73,14 +67,12 @@ export function mapDispatchToProps(dispatch){
    return {
       addFavCard: (character)=> dispatch(addFav(character)),
       removeFavCard: (id)=> dispatch(removeFav(id)),
-      getAllFav: ()=> dispatch(getAllFav())
    }
 }
 
 export function mapStateToProps(state){
    return {
       myFavorites: state.myFavorites,
-      allCharacters: state.allCharacters
    }
 }
 
