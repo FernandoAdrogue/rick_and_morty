@@ -49,7 +49,6 @@ function App() {
    useEffect(()=>{  // make the API request to get the amount off "characters" and selec
       axios(`https://rickandmortyapi.com/api/character`).then(({data})=>{ 
          setRandomId(Math.floor(Math.random() * (Number(data.info.count)-1))+1)
-         console.log(randomId);
       })
       onSearch(randomId)
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,11 +64,11 @@ function App() {
             window.alert('¡No hay personajes con este ID!');
          }
       })
-      // .catch(({response})=>{
-      //    if(response.status === 404){
-      //       window.alert('¡No hay personajes con este ID!')
-      //    }
-      // });
+      .catch(({response})=>{
+         if(response.status === 404){
+            window.alert('¡No hay personajes con este ID!')
+         }
+      });
    }
 
    
