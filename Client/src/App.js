@@ -75,9 +75,7 @@ function App() {
 
    
    const onClose = (id)=>{ //filter the "characters" to remove the card closed
-      const filtered = characters.filter((character)=>character.id !== id)
-         console.log(characters);
-         console.log(filtered);
+      const filtered = characters.filter((character)=>character.id !== Number(id))
          setCharacters(filtered)
       }
       

@@ -10,7 +10,7 @@ module.exports=
         
         const characterPath="/rickandmorty/character"
             if(req.url.includes(characterPath)){
-                const id = req.url.split("/")[3]
+                const id = req.url.split("/").at(-1)
                 if(id){
                     getCharById(res,id)
                     return

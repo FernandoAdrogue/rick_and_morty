@@ -1,15 +1,16 @@
 const axios = require("axios")
+const URL = "https://rickandmortyapi.com/api/character"
 
 const getCharById = (res,id)=>{
-    axios(`https://rickandmortyapi.com/api/character/${id}`)
+    axios.get(`${URL}/${id}`)
         .then(({data})=>{
             if(data){
                 const character = {
-                    id: id,
+                    id: data.id,
                     name: data.name,
                     gender: data.gender,
                     species: data.species,
-                    origin: data.origin.name,
+                    origin: data.origin,
                     image: data.image,
                     status: data.status
                 }
