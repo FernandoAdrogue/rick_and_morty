@@ -56,24 +56,28 @@ function App() {
    
   
    const onSearch = (id)=> { //make a api request whit an "id" and set "data" in local state
-      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+      id &&
+      axios(`http://localhost:3001/rickandmorty/character/${id}`)
+      .then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } 
-         else {
-            window.alert('¡No hay personajes con este ID!');
-         }
+         // else {
+         //    window.alert('¡No hay personajes con este ID!');
+         // }
       })
       .catch(({response})=>{
-         if(response.status === 404){
-            window.alert('¡No hay personajes con este ID!')
+         console.log(response);
+         window.alert(response.data)
          }
-      });
+      );
    }
 
    
    const onClose = (id)=>{ //filter the "characters" to remove the card closed
-      const filtered = characters.filter((character)=>character.id !== Number(id))
+      const filtered = characters.filter((character)=>character.id !== id)
+         console.log(characters);
+         console.log(filtered);
          setCharacters(filtered)
       }
       

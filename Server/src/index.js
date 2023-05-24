@@ -1,9 +1,8 @@
 const http = require("http")
-const data = require("./utils/data.js")
+//const data = require("./utils/data.js")
+const { getCharById } = require("./controllers/getCharById.js")
 const dotenv = require('dotenv').config()
 const {PORT, HOST} = process.env
-
-
 
 module.exports=
     http.createServer((req,res)=>{
@@ -11,14 +10,10 @@ module.exports=
         
         const characterPath="/rickandmorty/character"
             if(req.url.includes(characterPath)){
-                const characterId = req.url.split("/")[3]
-                if(characterId){
-                    const [character] = data.filter(character=> Number(characterId) === character.id)
-                    if(character){
-                        res.writeHead(200,{"Content-Type":"application/json"})
-                        res.end(JSON.stringify(character))  
-                        return
-                    }
+                const id = req.url.split("/")[3]
+                if(id){
+                    getCharById(res,id)
+                    return
                 }
         }
         res.writeHead(404,{"Content-Type":"text/plain"})
