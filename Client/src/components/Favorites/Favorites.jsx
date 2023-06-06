@@ -54,7 +54,7 @@ const Favorites =()=>{
             <div className={styles.carrucelFav}>
                 {console.log("myFavorites: ",myFavorites)}
                 {myFavorites.map( ({id,name,status,species,gender,origin,image}) => {
-                     return(
+                     return(id&&
                               <Card
                                  key={id}
                                  id={id}

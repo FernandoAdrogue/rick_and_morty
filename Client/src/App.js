@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useState} from 'react';
 import './App.css';
 import Cards from './components/Cards/Cards';
@@ -18,22 +19,34 @@ import { clearFav } from './redux/actions';
 function App() {
    
    const [characters, setCharacters] = useState([]) //local state characters
-   const [randomId,setRandomId] = useState(null) //locala state randomice id
    //Login
-   const [access, setAccess] = useState(false) //local state access condition
-   const EMAIL = 'myEmail@mail.com'   //mock off user
-   const PASSWORD = 'asdFgtrew1'      //mock off password
+   const [access, setAccess] = useState(false)
+   // const EMAIL = 'myEmail@mail.com'   //mock off user
+   // const PASSWORD = 'asdFgtrew1'      //mock off password
 
    const navigate = useNavigate()
    const dispatch = useDispatch()
    
-   const login = (userData)=> {  //the funcion redirec to home if acces condition is true
-      if (userData.password === PASSWORD && userData.email === EMAIL) {
-         setAccess(true);
-         navigate('/home');
+   // const login = (userData)=> {  //the funcion redirec to home if acces condition is true
+   //    if (userData.password === PASSWORD && userData.email === EMAIL) {
+   //       setAccess(true);
+   //       navigate('/home');
+   //    }
+   // }
+   async function login (userData) {
+      try{
+         const { email, password } = userData;
+         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const {data} = await axios(URL + `?email=${email}&password=${password}`)
+         const {access} = data
+         setAccess(data);
+         access ? navigate('/home'):window.alert("Login invalido");
+      }
+      catch({response}){
+         console.log(`${response.status} ${response.statusText}`);  
+         // window.alert(`${response.status} ${response.statusText}`)
       }
    }
-
    const logOut = ()=> {  //clear the acces condition and global states when the user log out
       setAccess(false)
       setCharacters([])
@@ -45,32 +58,44 @@ function App() {
       !access && navigate('/');
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [access])
-   
-   useEffect(()=>{  // make the API request to get the amount off "characters" and selec
-      axios(`https://rickandmortyapi.com/api/character`).then(({data})=>{ 
-         setRandomId(Math.floor(Math.random() * (Number(data.info.count)-1))+1)
-      })
-      onSearch(randomId)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+
+   useEffect(()=>{ 
+      access&&rndCharacter()
    },[access])
    
-  
-   const onSearch = (id)=> { //make a api request whit an "id" and set "data" in local state
-      id &&
-      axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
-         if (data.name) {
+   // whit promises
+   // const onSearch = (id)=> { //make a api request whit an "id" and set "data" in local state
+   //    id &&
+   //    axios(`http://localhost:3001/rickandmorty/character/${id}`)
+   //    .then(({ data }) => {
+   //       if (data.name) {
+   //          setCharacters((oldChars) => [...oldChars, data]);
+   //       } 
+   //       // else {
+   //       //    window.alert('¡No hay personajes con este ID!');
+   //       // }
+   //    })
+   //    .catch(({response})=>{
+   //       console.log(response);
+   //       window.alert(response.data)
+   //       }
+   //    );
+   // }
+
+   //whit async await
+   const onSearch = async (id)=> { //make a api request whit an "id" and set "data" in local state
+      try{
+         let found = characters.find((character)=>character.id === Number(id))
+         if(!found){
+            const {data}= await axios(`http://localhost:3001/rickandmorty/character/${id}`)
             setCharacters((oldChars) => [...oldChars, data]);
-         } 
-         // else {
-         //    window.alert('¡No hay personajes con este ID!');
-         // }
-      })
-      .catch(({response})=>{
-         console.log(response);
-         window.alert(response.data)
+         }else{
+            window.alert("El personaje y fue agregado")
          }
-      );
+      }
+      catch({response}){
+            window.alert(`${response.status} ${response.statusText}`)
+      }
    }
 
    
@@ -79,6 +104,15 @@ function App() {
          setCharacters(filtered)
       }
       
+   const rndCharacter = async ()=>{
+      try{
+         const {data}= await axios(`https://rickandmortyapi.com/api/character`)
+         await onSearch(Math.floor(Math.random() * (Number(data.info.count)-1))+1)
+      }
+      catch({response}){
+            window.alert(`${response.status} ${response.statusText}`)
+      }
+   }
         
    // render the elements accordin the defined paths and any other path is redirect to /404
    return (

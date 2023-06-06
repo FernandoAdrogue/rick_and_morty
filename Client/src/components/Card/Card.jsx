@@ -7,9 +7,11 @@ import { useState } from "react"
 //import {useSelector, useDispatch} from "react-redux"
 import FavButton from "../FavButton/FavButton"
 import { useEffect } from "react"
-import { connect } from "react-redux"
+import { connect} from "react-redux"
 
 function Card({id,name,status,species,gender,origin,image,onClose,addFavCard,removeFavCard,myFavorites}) {
+
+
    
    useEffect(() => {//Set Fav icon Card when Favorites or Filtered Favorites change
       myFavorites.forEach((fav) => {
