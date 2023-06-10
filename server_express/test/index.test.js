@@ -52,7 +52,7 @@ describe("Test de RUTAS", ()=>{
         })
         it("Si el character no existe se elimina correctamente de los favs", async ()=>{
             const response = await agent.delete('/rickandmorty/fav/1')
-            expect(response.body).toContainEqual(character2)
+            expect(response.body).not.toContainEqual(character)
         })
     })
 
